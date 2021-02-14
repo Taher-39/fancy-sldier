@@ -24,10 +24,13 @@ searchBtn.addEventListener('click', function () {
 // If this key 
 const KEY = '20268189-d9306f1db7d93ef8803a60d45';
 const getImages = (query) => {
-    fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
-        .then(response => response.json())
-        .then(data => showImages(data.hits))
-        .catch(error => displayError('Result in not found..Try another'))
+    setTimeout(() => {
+        fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
+            .then(response => response.json())
+            .then(data => showImages(data.hits))
+            .catch(error => displayError('Result in not found..Try another'))
+    }, 1000);
+    
 }
 
 // show images 
@@ -49,8 +52,7 @@ const showImages = (images) => {
 // slider area
 sliderBtn.addEventListener('click', function () {
     if (parseInt(document.getElementById('duration').value) <= 0) {
-        alert('is not valid time.')
-        
+        alert('Hay...It is not valid time.')
     }
     else{
         createSlider()
@@ -100,7 +102,7 @@ const createSlider = () => {
     alt="">`;
         sliderContainer.appendChild(item)
     })
-    
+
     changeSlide(0)
     timer = setInterval(function () {
         slideIndex++;
