@@ -24,7 +24,7 @@
       </div>
       <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
     </div>
-    <section class="images">
+    <section class="images" id="duration-input">
       <div class="justify-content-around align-items-center mt-3 gallery-header mb-2">
         <h3 class="head-title text-center">Select image for create slider</h3>
         <div class="input-group col-md-3 mb-2 mb-md-0">
@@ -32,10 +32,19 @@
         </div>
         <button id="create-slider" class="btn btn-primary px-5">Create slider</button>
       </div>
+      <!-- sniper Loading -->
+      <div id="sniper-loading" style="text-align: center;" class="d-none">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+
       <div class="row gallery">
 
       </div>
     </section>
+    <!-- error massage area -->
+    <h3 id="error-msg" class="text-danger"></h3>
     <!-- slider -->
     <div class="main">
       <section class="mt-5" id="sliders">
