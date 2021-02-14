@@ -29,7 +29,7 @@ const getImages = (query) => {
             .then(response => response.json())
             .then(data => showImages(data.hits))
             .catch(error => displayError('Result in not found..Try another'))
-    }, 1000);
+    }, 500);
     
 }
 
@@ -145,7 +145,7 @@ const sniperLoading = () => {
 }
 
 // error case 
-const displayError = (error) => {
-    const errorText = document.getElementById('error-msg');
-    errorText.innerText = error;
+const displayError = error => {
+    const errorTag = document.getElementById('error-msg');
+    errorTag.innerText = error;
 }
