@@ -41,15 +41,21 @@ const showImages = (images) => {
         div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
         div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick="selectItem(event,'${image.webformatURL}')" src="${image.webformatURL}" alt="${image.tags}">`;
         gallery.appendChild(div)
-        
+
     })
     sniperLoading()
 }
 
-
 // slider area
 sliderBtn.addEventListener('click', function () {
-    createSlider()
+    if (parseInt(document.getElementById('duration').value) <= 0) {
+        alert('is not valid time.')
+        
+    }
+    else{
+        createSlider()
+    }
+    
 })
 let slideIndex = 0;
 const selectItem = (event, img) => {
@@ -58,13 +64,12 @@ const selectItem = (event, img) => {
     let item = sliders.indexOf(img);
     if (item === -1) {
         sliders.push(img);
-    } 
-    else {
-        console.log(item)
-        sliders = sliders.filter(items => items === item)
-        // alert('Hey, Already added !')
-        console.log(sliders);
     }
+    else {
+        const newArray = sliders.filter(val => val !== sliders[item]);
+        sliders = newArray;
+    }
+
 }
 var timer
 const createSlider = () => {
@@ -95,21 +100,13 @@ const createSlider = () => {
     alt="">`;
         sliderContainer.appendChild(item)
     })
-    document.querySelector('#duration-input').addEventListener('input', function(){
-        if (parseInt(document.getElementById('duration').value) <= 0) {
-            sliderBtn.setAttribute('disabled', 'disabled');
-            // alert('Hay..Your time is not valid.');
-        }
-        else{
-            sliderBtn.removeAttribute('disabled');
-        }
-    })
+    
     changeSlide(0)
     timer = setInterval(function () {
         slideIndex++;
         changeSlide(slideIndex);
-    }, duration); 
- 
+    }, duration);
+
 }
 
 // change slider index 
